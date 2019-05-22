@@ -19,6 +19,7 @@ public class TestApp {
             AccountRepository accountRepository = context.getBean("accountRepository", AccountRepository.class);
             accountRepository.saveAndFlush(new SavingAccount(0, "correct@mail.ru")); /** save() don't call validation till commit */
 
+
             ReportingService reportingService = (ReportingService) context.getBean("reportingService");
             logger.info(">>>>> " + reportingService.accountReport(1L)); //TODO Refer project DDL and DML
             logger.info(">>>>> " + reportingService.accountReport(2L));

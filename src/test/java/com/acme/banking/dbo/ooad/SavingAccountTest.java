@@ -60,5 +60,4 @@ public class SavingAccountTest {
         assertThat(id).isEqualTo(0);
     }
 
-
 }

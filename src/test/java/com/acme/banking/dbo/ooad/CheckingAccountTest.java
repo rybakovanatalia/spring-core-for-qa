@@ -4,25 +4,27 @@ import com.acme.banking.dbo.ooad.domain.CheckingAccount;
 import org.junit.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class CheckingAccountTest {
 
     @Test(expected = IllegalStateException.class)
     public void shouldGetExceptionWhenWithdrawInvalidAmount() {
         //Given
-        CheckingAccount testSavingAccount = new CheckingAccount(0,100,300);
+        CheckingAccount testCheckingAccount = new CheckingAccount(0,100,300);
         //When
-        testSavingAccount.withdraw(500);
+        testCheckingAccount.withdraw(500);
     }
 
     @Test()
     public void shouldGetCorrectAmountAfterWithdrawValidAmount() {
         //Given
-        CheckingAccount testSavingAccount = new CheckingAccount(0,100,300);
+        CheckingAccount testCheckingAccount = new CheckingAccount(1,100,300);
         //When
-        testSavingAccount.withdraw(200);
+        testCheckingAccount.withdraw(300);
         //Then
-        double amount = testSavingAccount.getAmount();
-        assertThat(amount).isEqualTo(-100.);
+        double amount = testCheckingAccount.getAmount();
+        assertTrue("Amount was " + amount, amount == -200.);
     }
 }

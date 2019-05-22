@@ -32,7 +32,9 @@ public class SavingAccount implements Account {
     @Override
     public void withdraw(double amount) {
         if (validate(amount)) throw new IllegalStateException();
-        this.amount -= amount;
+        else {
+            this.amount -= amount;
+        }
     }
 
     @Override
