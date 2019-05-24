@@ -1,19 +1,41 @@
 package com.acme.banking.dbo.spring_my.domain;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("S")
 public class SavingAccount extends Account {
-    public SavingAccount() { }
+    private long id;
+    private double amount;
 
-    public SavingAccount(double amount, String email) {
-        super(amount, email);
+    public SavingAccount(long id, double amount) {
+        this.id = id;
+        this.amount = amount;
     }
 
     @Override
-    public String toString() {
-        return super.toString() + " S";
+    public long getId() {
+        return id;
+    }
+
+    @Override
+    public double getAmount() {
+        return amount;
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        if (validate(amount)) throw new IllegalStateException();
+        else {
+            this.amount -= amount;
+        }
+    }
+
+    @Override
+    public void deposit(double amount) {
+        this.amount += amount;
+    }
+
+    protected boolean validate(double amount) {
+        return amount > this.amount;
     }
 }

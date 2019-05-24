@@ -1,22 +1,18 @@
 package com.acme.banking.dbo.spring_my.domain;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("C")
-public class CheckingAccount extends Account {
+public class CheckingAccount extends SavingAccount{
     private double overdraft;
 
-    public CheckingAccount() { }
-
-    public CheckingAccount(double amount, double overdraft, String email) {
-        super(amount, email);
+    public CheckingAccount(long id, double amount, double overdraft) {
+        super(id, amount);
         this.overdraft = overdraft;
     }
 
     @Override
-    public String toString() {
-        return super.toString() + " C " + overdraft;
+    protected boolean validate(double amount) {
+        return super.validate(amount - overdraft);
     }
 }
