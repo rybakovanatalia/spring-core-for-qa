@@ -2,6 +2,7 @@ package com.acme.banking.dbo.spring.service;
 
 import com.acme.banking.dbo.spring.dao.AccountRepository;
 import com.acme.banking.dbo.spring.domain.Account;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = DemoIntegrationTestWithJavaSpringConfigTest.TestConfig.class)
 @ActiveProfiles("test")
+
+@Ignore
 public class DemoIntegrationTestWithJavaSpringConfigTest {
     @Autowired private ReportingService reportingService;
 

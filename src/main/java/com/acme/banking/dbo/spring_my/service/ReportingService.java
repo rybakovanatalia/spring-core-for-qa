@@ -19,7 +19,7 @@ public class ReportingService {
         this.accounts = accounts;
     }
 
-    public String reportForAccount(long id) {
+    public String makeAccountReport(long id) {
         Account account = accounts.findById(id);
         return "## " + account.getId() + " : " + account.getAmount();
     }
